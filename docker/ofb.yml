@@ -1,0 +1,29 @@
+version: '3'
+services:
+ ofb-back:
+   container_name: ofb-back
+   image: ofb-backend
+   networks:
+     - ofbgateway
+   links:
+      - "ofb-db:ofb-db"
+   ports:
+     - "8090:10010"
+
+ ofb-db:
+    build:
+      context: ./db
+    container_name: ofb-db
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+       - ofbgateway
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: filarmon_webfilar
+
+networks:
+  ofbgateway:
+    driver: bridge
