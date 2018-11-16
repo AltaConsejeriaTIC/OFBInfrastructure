@@ -1,0 +1,27 @@
+version: '3'
+services:
+  dds-db:
+    image: postgres
+    networks:
+      - ddsgateway
+    restart: always
+
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: lgbtq_pass
+      POSTGRES_DB: lgbtq
+
+  dds-back:
+    container_name: dds-back
+    image: dds-backend
+    networks:
+      - ddsgateway
+    links:
+      - "dds-db:dds-db"
+    ports:
+      - "80:8080"
+
+networks:
+  ddsgateway:
+    driver: bridge

@@ -1,1 +1,0 @@
-docker-compose -f /root/docker/ofb.yml up --build -d

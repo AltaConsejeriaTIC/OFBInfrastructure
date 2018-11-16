@@ -1,0 +1,1 @@
+docker-compose -f /root/docker/dds.yml up --build -d
