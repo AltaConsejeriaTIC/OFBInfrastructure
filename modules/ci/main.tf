@@ -31,13 +31,12 @@ resource "digitalocean_droplet" "jenkins" {
     destination = "/root/docker"
   }
 
-
   provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /root/init.sh",
       "sudo chmod +x /root/docker/start.sh",
       "sudo bash /root/init.sh",
-      "sudo bash /root/docker/start.sh"
+      "sudo bash /root/docker/start.sh",
     ]
   }
 }

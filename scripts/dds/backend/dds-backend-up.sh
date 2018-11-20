@@ -6,7 +6,7 @@ BRANCH=$2
 cd /root/backend
 
 if [[ $DEPLOYMENT_TYPE == "tag" ]]; then
-    rm -rf OFBBackend \
+    rm -rf LGBTQBackend \
     && git clone -b develop https://x-oauth-basic:96c13eb209f235fdf30b1fcb0dd887d68a526191@github.com/alvarotrianas/LGBTQBackend.git \
     && cd LGBTQBackend \
     && git checkout -b tempbranch tags/$BRANCH \
@@ -18,7 +18,7 @@ else
      BRANCH="develop"
     fi
 
-    rm -rf OFBBackend \
+    rm -rf LGBTQBackend \
     && git clone -b $BRANCH https://x-oauth-basic:96c13eb209f235fdf30b1fcb0dd887d68a526191@github.com/alvarotrianas/LGBTQBackend.git \
     && cd LGBTQBackend \
     && cp /root/backend/.env . \

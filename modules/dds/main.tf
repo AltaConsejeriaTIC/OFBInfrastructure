@@ -36,14 +36,21 @@ resource "digitalocean_droplet" "dds" {
     destination = "/root/backend"
   }
 
+  provisioner "file" {
+    source      = "scripts/dds/frontend"
+    destination = "/root/frontend"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /root/init.sh",
       "sudo chmod +x /root/backend/dds-backend-up.sh",
       "sudo chmod +x /root/docker/start.sh",
       "sudo chmod +x /root/backend/db-populate.sh",
+      "sudo chmod +x /root/frontend/dds-frontend-up.sh",
       "sudo bash /root/init.sh",
       "sudo bash /root/backend/dds-backend-up.sh branch develop",
+      "sudo bash /root/frontend/dds-frontend-up.sh branch development",
       "sudo bash /root/docker/start.sh",
       "sudo bash /root/backend/db-populate.sh"
     ]

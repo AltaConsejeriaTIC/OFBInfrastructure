@@ -5,7 +5,6 @@ services:
     networks:
       - ddsgateway
     restart: always
-
     ports:
       - 5432:5432
     environment:
@@ -20,7 +19,15 @@ services:
     links:
       - "dds-db:dds-db"
     ports:
-      - "80:8080"
+      - "8080:8080"
+
+  dds-admin:
+    container_name: dds-admin
+    image: dds-frontend
+    networks:
+      - ddsgateway
+    ports:
+      - "80:80"
 
 networks:
   ddsgateway:
