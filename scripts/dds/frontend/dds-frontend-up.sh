@@ -3,7 +3,7 @@
 DEPLOYMENT_TYPE=$1
 BRANCH=$2
 
-cd /root/backend
+cd /root/frontend
 
 if [[ $DEPLOYMENT_TYPE == "tag" ]]; then
     rm -rf LGBTQAdmin \
