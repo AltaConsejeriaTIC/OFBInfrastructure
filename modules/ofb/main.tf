@@ -36,16 +36,28 @@ resource "digitalocean_droplet" "ofb" {
     destination = "/root/backend"
   }
 
+  provisioner "file" {
+    source      = "scripts/ofb/frontend"
+    destination = "/root/frontend"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "sudo chmod +x /root/init.sh",
+      "sudo chmod +x /root/backend/ofb-backend-trivia-up.sh",
       "sudo chmod +x /root/backend/ofb-backend-up.sh",
+      "sudo chmod +x /root/backend/db-populate.sh.sh",
+      "sudo chmod +x /root/backend/ip-tables-conf.sh",
+      "sudo chmod +x /root/frontend/ofb-frontend-up.sh",
+      "sudo chmod +x /root/docker/start.sh",
       "sudo chmod +x /root/docker/start.sh",
       "sudo bash /root/init.sh",
       "sudo bash /root/backend/ofb-backend-up.sh branch development",
-      "sudo bash /root/docker/start.sh"
+      "sudo bash /root/backend/ofb-backend-trivia-up.sh branch development",
+      "sudo bash /root/frontend/ofb-frontend-up.sh branch master",
+      "sudo bash /root/docker/start.sh",
+      "sudo bash /root/backend/db-populate.sh",
     ]
-
   }
 }
 

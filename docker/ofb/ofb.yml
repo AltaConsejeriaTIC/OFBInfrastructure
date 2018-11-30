@@ -1,28 +1,44 @@
 version: '3'
 services:
+
  ofb-back:
    container_name: ofb-back
    image: ofb-backend
+   network_mode: "host"
+   extra_hosts:
+      - "ofb-db:138.121.200.234"
+
+ ofb-trivia-back:
+   container_name: ofb-trivia-back
+   image: ofb-backend-trivia
    networks:
-     - ofbgateway
+      - ofbgateway
    links:
       - "ofb-db:ofb-db"
    ports:
-     - "8090:10010"
+      - "8080:10011"
 
  ofb-db:
-    build:
+   build:
       context: ./db
-    container_name: ofb-db
-    command: --default-authentication-plugin=mysql_native_password
-    networks:
-       - ofbgateway
-    ports:
-      - 3306:3306
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: filarmon_webfilar
+   container_name: ofb-db
+   command: --default-authentication-plugin=mysql_native_password
+   networks:
+     - ofbgateway
+   ports:
+     - 3306:3306
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: filarmon_trivia
+
+ ofb-trivia-admin:
+   container_name: ofb-trivia-admin
+   image: ofb-trivia-frontend
+   networks:
+     - ofbgateway
+   ports:
+     - "80:80"
 
 networks:
   ofbgateway:

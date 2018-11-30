@@ -139,6 +139,7 @@ def main() {
     addJob(instance, "OFBBackend", "https://github.com/alvarotrianas/OFBBackend.git", "*/jenkins", credentialsId)
     addJob(instance, "LGBTQBackend", "https://github.com/alvarotrianas/LGBTQBackend.git", "*/jenkins", credentialsId)
     addJob(instance, "LGBTQAdmin", "https://github.com/alvarotrianas/LGBTQAdmin.git", "*/jenkins", credentialsId)
+    addJob(instance, "LGBTQAndroidBuild", "https://github.com/alvarotrianas/LGBTQApp.git", "*/jenkins", credentialsId)
 
 }
 

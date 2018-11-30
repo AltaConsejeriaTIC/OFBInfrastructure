@@ -6,8 +6,8 @@ module.exports = {
     connection: {
       host: 'ofb-db',
       port: '3306',
-      user: 'root',
-      password: 'root',
+      user: 'filarmon_userfil',
+      password: 'Ti8isBR(l2@p',
       database: 'filarmon_webfilar'
     }
   },
