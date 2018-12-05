@@ -12,6 +12,7 @@ if [[ $DEPLOYMENT_TYPE == "tag" ]]; then
     && git checkout -b tempbranch tags/$BRANCH \
     && cp /root/frontend/env.js src \
     && cp /root/docker/frontend/Dockerfile . \
+    && cp /root/docker/frontend/default.conf . \
     && docker build -t ofb-trivia-frontend .
 
 else
@@ -24,6 +25,7 @@ else
     && cd OFBTriviaFront \
     && cp /root/frontend/env.js src \
     && cp /root/docker/frontend/Dockerfile . \
+    && cp /root/docker/frontend/default.conf . \
     && docker build -t ofb-trivia-frontend .
 
 fi

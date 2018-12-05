@@ -8,6 +8,6 @@ RUN npm install
 RUN npm run build
 
 FROM nginx
-
+COPY --from=0 /usr/src/app/default.conf /etc/nginx/conf.d
 COPY --from=0 /usr/src/app/build /usr/share/nginx/html
 

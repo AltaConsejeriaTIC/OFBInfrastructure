@@ -27,7 +27,7 @@ def createUsers(Jenkins instance){
     def hudsonRealm = new HudsonPrivateSecurityRealm(false)
     def strategy = new GlobalMatrixAuthorizationStrategy()
 
-    def admins = ["fnovoa10", "brigitte"]
+    def admins = ["fnovoa10", "brigitte", "vecchio"]
     for(String username : admins){
         hudsonRealm.createAccount(username, username)
         strategy.add(Jenkins.ADMINISTER, username)
@@ -140,6 +140,8 @@ def main() {
     addJob(instance, "LGBTQBackend", "https://github.com/alvarotrianas/LGBTQBackend.git", "*/jenkins", credentialsId)
     addJob(instance, "LGBTQAdmin", "https://github.com/alvarotrianas/LGBTQAdmin.git", "*/jenkins", credentialsId)
     addJob(instance, "LGBTQAndroidBuild", "https://github.com/alvarotrianas/LGBTQApp.git", "*/jenkins", credentialsId)
+    addJob(instance, "OFBTriviaBackend", "https://github.com/alvarotrianas/OFBTriviaBackend.git", "*/development", credentialsId)
+    addJob(instance, "OFBTriviaFront", "https://github.com/alvarotrianas/OFBTriviaFront.git", "*/master", credentialsId)
 
 }
 
